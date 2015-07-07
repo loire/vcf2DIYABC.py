@@ -13,36 +13,36 @@
 import sys
 
 def usage():
-    print "##################################################################"
-    print "Unix usage:\n./vcf2diyabc.py"
-    print "On windows, rigth click on the script file to execute it through a python launcher"
-    print 2*"\n"
-    print " Tool to convert vcf file in diyABC input file for SNP data"
-    print " User needs to provide a popfile.tsv which specify individuals sex and population of origin (This information is not always present in vcf file."
-    print " popfile must be formated as follow:"
-    print "\tindiv \\t sex \\t pop"
-    print " with as many lines as there is individuals recorded in the vcf file. Individuals name must match the identifiants in the vcf file "
-    print "sex takes M or F only (or 9 if undefined)."
+    print("##################################################################")
+    print("Unix usage:\n./vcf2diyabc.py")
+    print("On windows, rigth click on the script file to execute it through a python launcher")
+    print(2*"\n")
+    print(" Tool to convert vcf file in diyABC input file for SNP data")
+    print(" User needs to provide a popfile.tsv which specify individuals sex and population of origin (This information is not always present in vcf file.")
+    print(" popfile must be formated as follow:")
+    print("\tindiv \\t sex \\t pop")
+    print(" with as many lines as there is individuals recorded in the vcf file. Individuals name must match the identifiants in the vcf file ")
+    print("sex takes M or F only (or 9 if undefined).")
 
 usage()
 
 
-vcffile = raw_input('Enter the vcf_filename :')
+vcffile = input('Enter the vcf_filename :')
 try:
     open(vcffile,'r')
 except IOError:
-    print "unable to open "+vcffile
+    print("unable to open "+vcffile)
     usage()
     sys.exit()
 
 
 
-indinfof = raw_input('Enter the individual information file :')
+indinfof = input('Enter the individual information file :')
 
 try:
     open(indinfof,'r')
 except IOError:
-    print "unable to open "+indinfof
+    print("unable to open "+indinfof)
     usage()
     sys.exit()
 
@@ -88,8 +88,8 @@ def parseline(l):
             else:
                 gt = indiv.split(":")[0]
                 if gt[0] not in ["0","1","."] or gt[2] not in ["0","1","."]:
-                    print "vcf format incorrect, only 0 and 1 should be present in the GT file for biallelic SNP"
-                    print "problematic line:\n"+l
+                    print("vcf format incorrect, only 0 and 1 should be present in the GT file for biallelic SNP")
+                    print("problematic line:\n"+l)
                     sys.exit()
                 if gt[0]=="." or gt[1]==".": # Missing data
                     geno = 9
@@ -120,7 +120,7 @@ def parsevcf(of):
 
 
 
-print "Parsing "+vcffile+"..."
+print("Parsing "+vcffile+"...")
 m = parsevcf(vcff)
 
 indivs = m[0]
@@ -131,7 +131,7 @@ outfilename = ".".join(vcffile.split(".")[:-1])
 outfilename = outfilename+".DIYABC.snp"
 
 
-print "Writing outputfile as: "+outfilename
+print("Writing outputfile as: "+outfilename)
 
 fout = open(outfilename,"w")
 fout.write("insert title here <NM=$insert_sex_ratio$NF>\n")
@@ -148,7 +148,7 @@ for cpt in range(len(indivs)):
     try:
         indivinfo[ind]
     except KeyError:
-        print "Indiv is not in population file ! please check entry file for "+ind+"\n"
+        print("Indiv is not in population file ! please check entry file for "+ind+"\n")
         sys.exit()
     
     sex = indivinfo[ind][0]
@@ -169,7 +169,7 @@ for cpt in range(len(indivs)):
 
 fout.close()
 
-tmp = raw_input("Press enter to exit")
+tmp = input("Press enter to exit")
 
             
 
