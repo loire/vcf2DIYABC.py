@@ -14,7 +14,8 @@ import sys
 
 def usage():
     print "##################################################################"
-    print "Usage:\n./vcf2diyabc infile.vcf popfile.tsv[tsv] "
+    print "Unix usage:\n./vcf2diyabc.py"
+    print "On windows, rigth click on the script file to execute it through a python launcher"
     print 2*"\n"
     print " Tool to convert vcf file in diyABC input file for SNP data"
     print " User needs to provide a popfile.tsv which specify individuals sex and population of origin (This information is not always present in vcf file."
@@ -23,36 +24,37 @@ def usage():
     print " with as many lines as there is individuals recorded in the vcf file. Individuals name must match the identifiants in the vcf file "
     print "sex takes M or F only (or 9 if undefined)."
 
+usage()
 
-if len(sys.argv)!=3:
+
+vcffile = raw_input('Enter the vcf_filename :')
+try:
+    open(vcffile,'r')
+except IOError:
+    print "unable to open "+vcffile
     usage()
     sys.exit()
+
+
+
+indinfof = raw_input('Enter the individual information file :')
 
 try:
-    open(sys.argv[1],'r')
+    open(indinfof,'r')
 except IOError:
-    print "unable to open"+sys.argv[1]
+    print "unable to open "+indinfof
     usage()
     sys.exit()
-
-try:
-    open(sys.argv[2],'r')
-except IOError:
-    print "unable to open"+sys.argv[1]
-    usage()
-    sys.exit()
-
-
 
 # Parsing informations about individuals
 indivinfo={}
-for line in open(sys.argv[2],'r'):
+for line in open(indinfof,'r'):
     c = line[:-1].split()
     indivinfo[c[0]]=(c[1],c[2])
     # Sex is first elements, pop is second
 
 
-vcff = open(sys.argv[1],'r')
+vcff = open(vcffile,'r')
 
 def parseline(l):
     locusinf=[]
@@ -118,16 +120,20 @@ def parsevcf(of):
 
 
 
-print "Parsing "+sys.argv[1]+"..."
+print "Parsing "+vcffile+"..."
 m = parsevcf(vcff)
 
 indivs = m[0]
 locs = m[1]
 mat = m[2]
 
-print "Writing outputfile as: "+sys.argv[1]+"_2_diy.tsv"
+outfilename = ".".join(vcffile.split(".")[:-1])
+outfilename = outfilename+".DIYABC.snp"
 
-fout = open(sys.argv[1]+"2diy.tsv","w")
+
+print "Writing outputfile as: "+outfilename
+
+fout = open(outfilename,"w")
 fout.write("insert title here <NM=$insert_sex_ratio$NF>\n")
 tmpstr = "IND\tSEX\tPOP"
 for loc in locs:
@@ -136,8 +142,6 @@ fout.write(tmpstr+"\n")
 
 iX = [i for i,x in enumerate(locs) if x == 'X']
 iY = [i for i,x in enumerate(locs) if x == 'Y']
-print iX
-print iY
 
 for cpt in range(len(indivs)):
     ind = indivs[cpt]
@@ -152,7 +156,6 @@ for cpt in range(len(indivs)):
     tmpstr=ind+"\t"+sex+"\t"+pop
     for genoI in range(len(mat)):
         geno = mat[genoI]
-        print geno
         genotype = geno[cpt]
         if sex == "9" and (genoI in iX or genoI in iY):
             genotype = 9
@@ -166,7 +169,7 @@ for cpt in range(len(indivs)):
 
 fout.close()
 
-
+tmp = raw_input("Press enter to exit")
 
             
 

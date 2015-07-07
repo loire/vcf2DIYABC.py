@@ -1,0 +1,5 @@
+insert title here <NM=$insert_sex_ratio$NF>
+IND	SEX	POP	A	A	A	A	A	A	Y	X
+NA00001	M	pop1	2	2	2	2	2	2	1	1
+NA00002	9	pop2	2	2	1	1	2	2	9	9
+NA00003	F	pop2	1	1	0	2	2	9	9	0
