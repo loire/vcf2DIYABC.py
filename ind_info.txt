@@ -1,0 +1,3 @@
+NA00001	M pop1
+NA00002 9 pop2
+NA00003 F pop2
