@@ -7,7 +7,7 @@ Tool to convert vcf file in diyABC input file for SNP data
 
 Requirement
 -----------
-* python 2.7
+* python 2.x
 * A version compatible with python 3.x is avaible on branch `python3.x`
 * Windows users: This script is unable to run if python is not installed on your machine. 
 I strongly recommand you do the necessary step to achieve this by following this [link](http://docs.python-guide.org/en/latest/starting/install/win/), since it's probably gonna be useful for many other bioinformatic purposes. 
