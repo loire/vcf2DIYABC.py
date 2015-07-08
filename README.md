@@ -17,8 +17,10 @@ TODO: I'm currently trying to produce a self contained executable to run the scr
 Installation
 ------------
 For unix users, you can clone this repo if git is install on your system with: 
-`git clone `
 
+`git clone https://github.com/loire/vcf2DIYABC.snp.git`
+
+Or, you can download the 
 
 
 
