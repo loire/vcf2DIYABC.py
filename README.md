@@ -14,24 +14,16 @@ I strongly recommand you do the necessary step to achieve this by following this
 
 TODO: I'm currently trying to produce a self contained executable to run the script without the need for a python installation thanks to [py2exe](http://www.py2exe.org/)
 
-Installation
-------------
-For unix users, you can clone this repo if git is install on your system with: 
+Download/Installation
+---------------------
+Unix users can clone this repository if git is installed on their system with: 
 
 `git clone https://github.com/loire/vcf2DIYABC.snp.git`
 
-Or, you can download the 
+a link to a zip archive of this repository is on this page. 
 
+To install, just unzip the archive in a local directory.
 
-
-
-Input file 
-----------
-* a vcf file (tested on 4.0 version of this )
-* User needs to provide a popfile.tsv which specify individuals sex and population of origin (This information is not present in a typical vcf file while being needed for DIYABC analysis. 
-
-
-You can find an example of each file in example directory of this repo. A perfect match is required between names of individuals in the vcf file and those in the individuals informations file. 
 
 Usage
 -----
@@ -40,5 +32,19 @@ Usage
 python vcf2DIYABC.py
 ```
 
-* On windows, navigate in the file manager to find right click on the script file to execute it
+* On windows, navigate in the file manager to find where you download and uncompressed the repository and then right click on the script file to execute it. 
 
+
+Once launched, the program will ask you to enter the path and name of your input files.
+
+Input files 
+-----------
+* a vcf file (tested on 4.0 version of this file format)
+* A text file which specify individuals sex and population of origin (This information is not present in a typical vcf file while being needed for DIYABC analysis. This file follow this convention:
+```
+
+```
+
+
+
+You can find an example of each file in example directory of this repo. A perfect match is required between names of individuals in the vcf file and those in the individuals informations file. 
