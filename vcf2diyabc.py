@@ -8,6 +8,23 @@
 # with as many lines as there is individuals recorded in the vcf file. Individuals name must match the identifiants in the vcf file 
 # Additionnaly, the sex ratio must be provided as a float number. Specify 1 for equal sex ratio
 
+# Author: Etienne Loire etienne.loire(at)gmail.com
+# This script has been written during a post doc at the CBGP lab of the french institute for agronomical research
+# http://www1.montpellier.inra.fr/CBGP/
+# Usual license:
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.#
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 
 import sys
