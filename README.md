@@ -40,11 +40,13 @@ Once launched, the program will ask you to enter the path and name of your input
 Input files 
 -----------
 * a vcf file (tested on 4.0 version of this file format)
-* A text file which specify individuals sex and population of origin (This information is not present in a typical vcf file while being needed for DIYABC analysis. This file follow this convention:
-```
+* A text file which specify individuals sex and population of origin (This information is not present in a typical vcf file while being needed for DIYABC analysis. This file contains a line for each individuals. First column is the individual ID (same as the name in your vcf file), second is the sex ("M" or "F" in uppercase, "9" if data is missing), and third is the population name.
+* Example:
 
 ```
-
-
+NA00001	M pop1
+NA00002 9 pop2
+NA00003 F pop2
+```
 
 You can find an example of each file in example directory of this repo. A perfect match is required between names of individuals in the vcf file and those in the individuals informations file. 
