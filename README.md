@@ -50,3 +50,13 @@ NA00003 F pop2
 ```
 
 You can find an example of each file in example directory of this repo. A perfect match is required between names of individuals in the vcf file and those in the individuals informations file. 
+
+Acknowledgment
+---------------
+This script was written by Etienne Loire in the [CBGP lab of the french institute for agronomical research](http://www1.montpellier.inra.fr/CBGP/). it's free to use or modify under the GPL license.
+
+
+
+
+
+
